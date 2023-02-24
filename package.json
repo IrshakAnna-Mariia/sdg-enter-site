@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@craco/craco": "^7.0.0",
+    "@tailwindcss/forms": "^0.5.3",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",
@@ -14,6 +15,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
+    "tailwind-scrollbar-hide": "^1.1.7",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.0"
   },
@@ -47,12 +49,15 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.53.0",
     "@typescript-eslint/parser": "^5.53.0",
+    "autoprefixer": "^10.4.13",
     "eslint": "^8.34.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.32.2",
+    "postcss": "^8.4.21",
+    "prettier": "^2.8.4",
     "prettier-plugin-tailwindcss": "^0.2.3",
-    "prettier": "^2.8.4"
+    "tailwindcss": "^3.2.7"
   },
   "main": "index.js",
   "repository": "https://IrshakAnna-Mariia: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@github.com/IrshakAnna-Mariia/sdg-enter-site.git",
