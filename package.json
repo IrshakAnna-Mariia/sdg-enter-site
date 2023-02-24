@@ -23,7 +23,8 @@
     "lint": "yarn run lint:check -- --fix",
     "lint:check": "eslint .",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prettier": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc.js"
   },
   "eslintConfig": {
     "extends": [
@@ -47,7 +48,11 @@
     "@typescript-eslint/eslint-plugin": "^5.53.0",
     "@typescript-eslint/parser": "^5.53.0",
     "eslint": "^8.34.0",
-    "eslint-plugin-react": "^7.32.2"
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.32.2",
+    "prettier-plugin-tailwindcss": "^0.2.3",
+    "prettier": "^2.8.4"
   },
   "main": "index.js",
   "repository": "https://IrshakAnna-Mariia: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@github.com/IrshakAnna-Mariia/sdg-enter-site.git",
