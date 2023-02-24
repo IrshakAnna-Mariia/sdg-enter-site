@@ -1,12 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
+import logo from 'logo.svg';
+import 'index.css'
 
 function App() {
   return (
     <div>
       <header>
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
+        <p className="text-3xl">
           SDG - Space developing game
         </p>
       </header>
