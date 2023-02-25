@@ -1,0 +1,37 @@
+name: GitHub Actions
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on:
+  push:
+    branches:
+      - main
+      - stage
+      - develop
+      - hotfixes
+  pull_request:
+
+jobs:
+  cs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'yarn'
+      - run: npm config set -- "//npm.pkg.github.com/:_authToken" "${{ secrets.LIFEMD_OPS_BOT_PAT }}"
+      - run: yarn install --frozen-lockfile
+      - run: yarn run prettier
+      - run: yarn run prettier:check
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'yarn'
+      - run: npm config set -- "//npm.pkg.github.com/:_authToken" "${{ secrets.LIFEMD_OPS_BOT_PAT }}"
+      - run: yarn install --frozen-lockfile
+      - name: Lint code
+        run: yarn run lint:check
