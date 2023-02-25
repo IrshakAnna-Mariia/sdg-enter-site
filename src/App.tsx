@@ -7,7 +7,7 @@ function App() {
     <div>
       <header>
         <img src={logo} className="App-logo" alt="logo" />
-        <p className="text-3xl text-gray-700 font-bold mb-5">SDG - Space developing game</p>
+        <p className="mb-5 text-3xl font-bold text-gray-700">SDG - Space developing game</p>
       </header>
     </div>
   );
