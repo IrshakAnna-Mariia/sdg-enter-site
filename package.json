@@ -26,7 +26,8 @@
     "lint:check": "eslint .",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "prettier": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc.js"
+    "prettier": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc.js",
+    "prettier:check": "prettier --check ."
   },
   "eslintConfig": {
     "extends": [

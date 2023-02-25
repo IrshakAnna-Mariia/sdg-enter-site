@@ -20,8 +20,8 @@ jobs:
           cache: 'yarn'
       - run: npm config set -- "//npm.pkg.github.com/:_authToken" "${{ secrets.LIFEMD_OPS_BOT_PAT }}"
       - run: yarn install --frozen-lockfile
-      - run: yarn run cs
-      - run: yarn run cs:check
+      - run: yarn run prettier
+      - run: yarn run prettier:check
 
   lint:
     runs-on: ubuntu-latest
