@@ -1,5 +1,11 @@
+import MainBanner from './MainBanner';
+
 const Landing = () => {
-  return <></>;
+  return (
+    <>
+      <MainBanner />
+    </>
+  );
 };
 
 export default Landing;
