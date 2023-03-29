@@ -4,7 +4,7 @@ import ScrollBanner from './ScrollBanner';
 
 export const LastNews = () => {
   return (
-    <div className="flex min-h-screen flex-col items-center gap-16">
+    <div className="flex min-h-screen flex-col items-center gap-16 mt-24">
       <SectionHeader title={'THE LAST NEWS'} />
       <div>
         <ScrollBanner />

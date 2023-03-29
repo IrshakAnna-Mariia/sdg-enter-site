@@ -1,6 +1,7 @@
 import AboutGame from './AboutGame';
 import LastNews from './LastNews';
 import MainBanner from './MainBanner';
+import RoadMap from './RoadMap';
 
 const Landing = () => {
   return (
@@ -8,6 +9,7 @@ const Landing = () => {
       <MainBanner />
       <AboutGame />
       <LastNews />
+      <RoadMap />
     </>
   );
 };
