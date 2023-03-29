@@ -1,4 +1,5 @@
 import AboutGame from './AboutGame';
+import LastNews from './LastNews';
 import MainBanner from './MainBanner';
 
 const Landing = () => {
@@ -6,6 +7,7 @@ const Landing = () => {
     <>
       <MainBanner />
       <AboutGame />
+      <LastNews />
     </>
   );
 };
