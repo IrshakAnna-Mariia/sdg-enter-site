@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Button from 'components/Button';
-import { ReactComponent as Logo } from 'icons/logo.svg';
+import Button from '/src/components/Button';
+import { ReactComponent as Logo } from '/src/icons/logo.svg';
 
 const Header = () => {
   return (

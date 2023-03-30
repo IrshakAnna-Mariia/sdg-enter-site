@@ -1,6 +1,6 @@
-import Button from 'components/Button';
-import SectionHeader from 'components/SectionHeader';
-import { ReactComponent as AboutGameRocket } from 'icons/aboutGameRocket.svg';
+import Button from '/src/components/Button';
+import SectionHeader from '/src/components/SectionHeader';
+import { ReactComponent as AboutGameRocket } from '/src/icons/aboutGameRocket.svg';
 
 const AboutGame = () => {
   return (

@@ -1,5 +1,5 @@
-import Button from 'components/Button';
-import { ReactComponent as Spaceship } from 'icons/spaceship.svg';
+import Button from '/src/components/Button';
+import { ReactComponent as Spaceship } from '/src/icons/spaceship.svg';
 
 const MainBanner = () => {
   return (

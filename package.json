@@ -3,12 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@craco/craco": "^7.0.0",
+    "@craco/craco": "^5.9.0",
     "@tailwindcss/forms": "^0.5.3",
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^13.0.0",
-    "@testing-library/user-event": "^13.2.1",
-    "@types/jest": "^27.0.1",
     "@types/node": "^16.7.13",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
@@ -17,26 +13,18 @@
     "react-dom": "^18.2.0",
     "react-horizontal-scrolling-menu": "^4.0.1",
     "react-router-dom": "^6.9.0",
-    "react-scripts": "5.0.1",
     "tailwind-scrollbar-hide": "^1.1.7",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.0"
   },
   "scripts": {
-    "start": "craco start",
-    "build": "craco build",
+    "start": "vite",
+    "build": "tsc && vite build",
+    "serve": "vite preview",
     "lint": "yarn run lint:check -- --fix",
-    "lint:check": "eslint .",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "lint:check": "eslint . --ext .ts,.tsx",
     "prettier": "prettier --write .",
     "prettier:check": "prettier --check ."
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
   },
   "browserslist": {
     "production": [
@@ -53,6 +41,7 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.53.0",
     "@typescript-eslint/parser": "^5.53.0",
+    "@vitejs/plugin-react": "^3.1.0",
     "autoprefixer": "^10.4.13",
     "eslint": "^8.34.0",
     "eslint-config-prettier": "^8.6.0",
@@ -61,7 +50,10 @@
     "postcss": "^8.4.21",
     "prettier": "^2.8.4",
     "prettier-plugin-tailwindcss": "^0.2.3",
-    "tailwindcss": "^3.2.7"
+    "tailwindcss": "^3.2.7",
+    "vite": "^4.2.1",
+    "vite-plugin-svgr": "^2.4.0",
+    "vite-tsconfig-paths": "^4.0.7"
   },
   "main": "index.js",
   "repository": "https://IrshakAnna-Mariia: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@github.com/IrshakAnna-Mariia/sdg-enter-site.git",

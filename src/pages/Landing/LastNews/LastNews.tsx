@@ -1,5 +1,5 @@
-import Button from 'components/Button';
-import SectionHeader from 'components/SectionHeader';
+import Button from '/src/components/Button';
+import SectionHeader from '/src/components/SectionHeader';
 import ScrollBanner from './ScrollBanner';
 
 export const LastNews = () => {

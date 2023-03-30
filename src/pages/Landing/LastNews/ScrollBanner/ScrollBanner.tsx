@@ -3,9 +3,9 @@ import { useCallback, useState } from 'react';
 import { ScrollMenu } from 'react-horizontal-scrolling-menu';
 import 'react-horizontal-scrolling-menu/dist/styles.css';
 
-import news1 from 'icons/news1.png';
-import news2 from 'icons/news2.png';
-import news3 from 'icons/news3.png';
+import news1 from '/src/icons/news1.png';
+import news2 from '/src/icons/news2.png';
+import news3 from '/src/icons/news3.png';
 
 import ScrollBannerCard from '../ScrollBannerCard';
 import { onWheel } from './scrollBanner.settings';
