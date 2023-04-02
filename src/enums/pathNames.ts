@@ -4,7 +4,7 @@ export enum PathName {
   Login = '/login',
   About = '/about',
   RoadMap = '/road-map',
-  Team = '/team',
+  News = '/news',
   CQS = '/cqs',
   Profile = '/my-profile',
 }
