@@ -10,7 +10,9 @@ function Main() {
   return (
     <div className="font-mono">
       <Header />
-      <Outlet />
+      <div className="py-16">
+        <Outlet />
+      </div>
       <Footer />
     </div>
   );
