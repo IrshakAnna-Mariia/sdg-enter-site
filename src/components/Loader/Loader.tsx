@@ -17,16 +17,14 @@ const Loader: React.FC<LoaderProps> = ({ isVisible }) => {
     <>
       {isVisible && (
         <motion.div
-          data-test="page_loader"
-          data-testid="page_loader"
-          className="fixed inset-0 z-30 m-auto h-20 w-20 flex"
+          className="fixed inset-0 z-30 m-auto flex h-20 w-20"
           initial="initial"
           animate="animate"
           variants={textContainer}
         >
-          <div className="bg-white h-4 h-4 rounded-lg" />
-          <div className="bg-white h-4 h-4 rounded-lg" />
-          <div className="bg-white h-4 h-4 rounded-lg" />
+          <div className="h-4 h-4 rounded-lg bg-white" />
+          <div className="h-4 h-4 rounded-lg bg-white" />
+          <div className="h-4 h-4 rounded-lg bg-white" />
         </motion.div>
       )}
     </>
