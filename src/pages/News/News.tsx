@@ -1,4 +1,5 @@
 import SectionHeader from 'components/SectionHeader';
+
 import NewItem from './NewItem';
 import SearchForm from './SearchForm';
 
@@ -7,16 +8,19 @@ const news = [
     title: 'Title 1',
     text: 'Long text. Some new sentence. And one more. Long text. Some new sentence. And one more. Long text. Some new sentence. And one more. Long text. Some new sentence. And one more.',
     filePath: '',
+    id: '1',
   },
   {
     title: 'Title 2',
     text: 'Long text. Some new sentence. And one more. Long text. Some new sentence. And one more. Long text. Some new sentence. And one more. Long text. Some new sentence. And one more.',
     filePath: '',
+    id: '2',
   },
   {
     title: 'Title 3',
     text: 'Long text. Some new sentence. And one more. Long text. Some new sentence. And one more. Long text. Some new sentence. And one more. Long text. Some new sentence. And one more.',
     filePath: '',
+    id: '3',
   },
 ];
 
