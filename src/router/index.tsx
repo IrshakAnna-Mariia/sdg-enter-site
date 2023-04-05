@@ -13,6 +13,7 @@ const Login = lazy(() => import('pages/Login'));
 const Landing = lazy(() => import('pages/Landing'));
 const About = lazy(() => import('pages/About'));
 const RoadMap = lazy(() => import('pages/RoadMap'));
+const NewsPage = lazy(() => import('pages/NewsPage'));
 const News = lazy(() => import('pages/News'));
 const CQS = lazy(() => import('pages/CQS'));
 // const Dashboard = lazy(() => import('pages/Dashboard'));
@@ -27,6 +28,7 @@ export const routerConfig = (
     <Route element={<SuspenseWrapper children={<Main />} />}>
       <Route path={PathName.HomePage} element={<SuspenseWrapper children={<Landing />} />} />
       <Route path={PathName.About} element={<SuspenseWrapper children={<About />} />} />
+      <Route path={`${PathName.News}/:newsId`} element={<SuspenseWrapper children={<NewsPage />} />} />
       <Route path={PathName.News} element={<SuspenseWrapper children={<News />} />} />
       <Route path={PathName.RoadMap} element={<SuspenseWrapper children={<RoadMap />} />} />
       <Route path={PathName.CQS} element={<SuspenseWrapper children={<CQS />} />} />
