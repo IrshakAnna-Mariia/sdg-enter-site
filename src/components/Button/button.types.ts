@@ -5,4 +5,5 @@ export interface ButtonProps {
   styleForm: 'pill' | 'text';
   className?: string;
   size?: 'base' | 'lg';
+  postIcon?: boolean;
 }
