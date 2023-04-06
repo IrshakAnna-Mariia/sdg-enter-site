@@ -13,7 +13,7 @@ const SearchForm = () => {
       <SearchIcon className="absolute top-8 left-8 h-4 w-4" />
       <input
         className="h-12 w-1/2 rounded-3xl bg-gray-200 pl-12 pr-4 outline-none focus:shadow-md"
-        placeholder="Article name or keywords..."
+        placeholder="Enter title or keywords..."
       />
       <div className="flex w-1/2 justify-between gap-4 px-4">
         <select className="w-full select-none rounded-3xl border border-gray-200  bg-white px-4 shadow-sm outline-none ring-0 focus:border-gray-300 focus:shadow-xl focus:ring-0 focus:ring-offset-0">

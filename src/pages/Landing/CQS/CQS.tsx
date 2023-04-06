@@ -1,7 +1,10 @@
+import Button from 'components/Button';
 import SectionHeader from 'components/SectionHeader';
 import SpaceX from 'icons/spacex.png';
 
 const CQS = () => {
+  const handleSubmit = () => {};
+
   return (
     <div className="mt-24 flex flex-col items-center gap-8">
       <SectionHeader title={'CQS'} />
@@ -30,6 +33,9 @@ const CQS = () => {
           </div>
           <img className="w-96 rounded rounded-3xl" alt="spaceX" src={SpaceX} />
         </div>
+
+        {/* TODO: disable for unregister users */}
+        <Button onClick={handleSubmit} label={'Submit'} styleForm={'pill'} size="base" className="px-14" />
       </div>
     </div>
   );

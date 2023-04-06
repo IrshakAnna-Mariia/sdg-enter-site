@@ -6,5 +6,6 @@ export enum PathName {
   RoadMap = '/road-map',
   News = '/news',
   CQS = '/cqs',
+  AddCQS = '/add-cws',
   Profile = '/my-profile',
 }
