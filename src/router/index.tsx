@@ -10,6 +10,7 @@ import Main from 'layouts/Main/Main';
 import { PathName } from 'enums/pathNames';
 
 const Login = lazy(() => import('pages/Login'));
+const SignUp = lazy(() => import('pages/SignUp'));
 const Landing = lazy(() => import('pages/Landing'));
 const About = lazy(() => import('pages/About'));
 const RoadMap = lazy(() => import('pages/RoadMap'));
@@ -35,6 +36,7 @@ export const routerConfig = (
       <Route path={PathName.AddCQS} element={<SuspenseWrapper children={<AddNewCQS />} />} />
       <Route path={PathName.CQS} element={<SuspenseWrapper children={<CQS />} />} />
       <Route path={PathName.Login} element={<SuspenseWrapper children={<Login />} />} />
+      <Route path={PathName.SignUp} element={<SuspenseWrapper children={<SignUp />} />} />
       {/* <Route
         path="dashboard/*"
         element={

@@ -1,20 +1,21 @@
 import { useNavigate } from 'react-router-dom';
-import Button from 'components/Button';
+
 import SectionHeader from 'components/SectionHeader';
 import { PathName } from 'enums/pathNames';
+import Button from 'components/Button';
 
-const Login = () => {
+const SignUp = () => {
   const navigate = useNavigate();
-  
+
   const handleSubmit = () => {};
 
-  const handleSignUpAccount = () => {
-    navigate(PathName.SignUp);
-  }
+  const handleLogin = () => {
+    navigate(PathName.Login);
+  };
 
   return (
-    <div className="w-full flex flex-col">
-      <SectionHeader title={'Login'} />
+    <div className="flex w-full flex-col">
+      <SectionHeader title={'Sign up'} />
 
       <div className="mx-auto mb-8 h-px w-3/4 bg-orange" />
 
@@ -35,13 +36,16 @@ const Login = () => {
           />
         </div>
 
-        <Button label={'Log in'} onClick={handleSubmit} styleForm={'pill'} className="mx-auto" size="lg" />
+        <Button label={'Sign up'} onClick={handleSubmit} styleForm={'pill'} className="mx-auto" size="lg" />
       </div>
-      <button className="my-2 mx-auto max-w-fit border-b border-b-orange text-sm text-white" onClick={handleSignUpAccount}>
-        Don't have account? Click here!
+      <button
+        className="my-2 mx-auto max-w-fit border-b border-b-orange text-sm text-white"
+        onClick={handleLogin}
+      >
+        Already have an account? Log In
       </button>
     </div>
   );
 };
 
-export default Login;
+export default SignUp;
