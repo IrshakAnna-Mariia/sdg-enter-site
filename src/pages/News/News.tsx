@@ -1,7 +1,7 @@
 import SectionHeader from 'components/SectionHeader';
 
 import NewItem from './NewItem';
-import SearchForm from './SearchForm';
+import SearchForm from 'components/SearchForm';
 
 const news = [
   {
