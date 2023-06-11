@@ -5,8 +5,8 @@ const newsItem =
     {
       title: 'Title 1',
       text: 'Long text. Some new sentence. And one more. Long text. Some new sentence. And one more. Long text. Some new sentence. And one more. Long text. Some new sentence. And one more.',
-      filePath: '',
-      id: '1',
+      picture_news: '',
+      id: 1,
     };
 const NewsPage = () => {
   return (

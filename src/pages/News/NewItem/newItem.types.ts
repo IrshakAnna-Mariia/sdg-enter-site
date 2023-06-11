@@ -1,7 +1,5 @@
-export interface NewItemProps {
-    title: string;
-    text: string;
-    filePath?: string;
-    id: string;
+import { News } from "store/news/news.types";
+
+export interface NewItemProps extends News {
     isFullVersion?: boolean;
 }
