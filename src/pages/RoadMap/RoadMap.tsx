@@ -20,13 +20,8 @@ const RoadMap = () => {
       <p>- First time we presented this idea was on May 27, 2021 in Noosphere, Cherkasy</p>
       <p className="flex">
         - Now we at development stage
-        <motion.div
-          initial="initial"
-          animate="animate"
-          className="pl-2"
-          variants={textContainer}
-        >
-        _
+        <motion.div initial="initial" animate="animate" className="pl-2" variants={textContainer}>
+          _
         </motion.div>
       </p>
     </div>

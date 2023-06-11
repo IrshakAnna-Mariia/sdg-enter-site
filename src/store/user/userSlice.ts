@@ -4,16 +4,16 @@ import Cookies from 'js-cookie';
 import { UserProps } from './user.types';
 
 const initialState: UserProps = {
-    username: '',
-    email: '',
-    password: '',
-    role: '',
-    phone: '',
-    birthdate: '',
-    first_name: '',
-    last_name: '',
-    accessToken: '',
-    idToken: '',
+  username: '',
+  email: '',
+  password: '',
+  role: '',
+  phone: '',
+  birthdate: '',
+  first_name: '',
+  last_name: '',
+  accessToken: '',
+  idToken: '',
 };
 
 const userSlice = createSlice({
@@ -27,8 +27,7 @@ const userSlice = createSlice({
       state.accessToken = accessToken;
       state.idToken = idToken;
     },
-    setUser: (state, action: PayloadAction<UserProps>) => {
-    },
+    setUser: (state, action: PayloadAction<UserProps>) => {},
     clearUser: (): UserProps => {
       Cookies.remove('accessToken');
       return initialState;

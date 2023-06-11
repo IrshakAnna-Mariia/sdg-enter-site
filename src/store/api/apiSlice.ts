@@ -5,10 +5,7 @@ import { baseQueryWithReauth } from 'utils/services';
 
 import { UserProps } from '../user/user.types';
 
-export const tagTypes = [
-  'Profile',
-  'News',
-];
+export const tagTypes = ['Profile', 'News'];
 
 export const apiSlice = createApi({
   reducerPath: 'api',
@@ -42,7 +39,4 @@ export const apiSlice = createApi({
   }),
 });
 
-export const {
-  useUpdateMyProfileMutation,
-  useLazyGetMyProfileQuery,
-} = apiSlice;
+export const { useUpdateMyProfileMutation, useLazyGetMyProfileQuery } = apiSlice;

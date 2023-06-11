@@ -19,14 +19,14 @@ const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-    <PersistGate persistor={persistor} loading={<Loader isVisible />}>
-    <RouterProvider router={router} />
-    <ScrollToTop
-      smooth
-      style={{ backgroundColor: 'transparent', borderRadius: '9999px' }}
-      component={<ScrollTop className="h-12 w-12" />}
-    />
-    </PersistGate>
+      <PersistGate persistor={persistor} loading={<Loader isVisible />}>
+        <RouterProvider router={router} />
+        <ScrollToTop
+          smooth
+          style={{ backgroundColor: 'transparent', borderRadius: '9999px' }}
+          component={<ScrollTop className="h-12 w-12" />}
+        />
+      </PersistGate>
     </Provider>
   </React.StrictMode>,
 );

@@ -38,10 +38,7 @@ const SignUp = () => {
 
         <Button label={'Sign up'} onClick={handleSubmit} styleForm={'pill'} className="mx-auto" size="lg" />
       </div>
-      <button
-        className="my-2 mx-auto max-w-fit border-b border-b-orange text-sm text-white"
-        onClick={handleLogin}
-      >
+      <button className="my-2 mx-auto max-w-fit border-b border-b-orange text-sm text-white" onClick={handleLogin}>
         Already have an account? Log In
       </button>
     </div>

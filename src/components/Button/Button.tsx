@@ -17,7 +17,7 @@ const Button: React.FC<ButtonProps> = ({ label, onClick, styleForm, className, s
   return (
     <button className={buttonClasses} onClick={onClick} disabled={disabled}>
       {label}
-      {postIcon && <RowRight className="w-4 h-4" />}
+      {postIcon && <RowRight className="h-4 w-4" />}
     </button>
   );
 };
