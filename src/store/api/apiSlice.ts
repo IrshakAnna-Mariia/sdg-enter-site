@@ -54,4 +54,5 @@ export const apiSlice = createApi({
   }),
 });
 
-export const { usePostNewUserMutation, useLoginUserMutation, useUpdateMyProfileMutation, useLazyGetMyProfileQuery } = apiSlice;
+export const { usePostNewUserMutation, useLoginUserMutation, useUpdateMyProfileMutation, useLazyGetMyProfileQuery } =
+  apiSlice;

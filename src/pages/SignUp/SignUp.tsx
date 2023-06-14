@@ -129,7 +129,9 @@ const SignUp = () => {
         </div>
 
         {!!Object.entries(errors).length && (
-          <p className="text-orange decoration-red-500 underline py-2 mx-auto max-w-fit text-lg">Please enter a valid data</p>
+          <p className="mx-auto max-w-fit py-2 text-lg text-orange underline decoration-red-500">
+            Please enter a valid data
+          </p>
         )}
 
         <Button label={'Sign up'} styleForm={'pill'} className="mx-auto" size="lg" />
