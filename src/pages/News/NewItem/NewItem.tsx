@@ -7,7 +7,7 @@ import DefaultNewsIcon from 'icons/defaultNewsIcon.png';
 import { NewItemProps } from './newItem.types';
 import classNames from 'classnames';
 
-const NewItem: React.FC<NewItemProps> = ({ title, text, filePath, id, isFullVersion }) => {
+const NewItem: React.FC<NewItemProps> = ({ title, text, picture_news, id, isFullVersion }) => {
   const navigate = useNavigate();
 
   const textClasses = classNames('text-justify text-base', !isFullVersion && 'max-h-24 overflow-hidden');
@@ -36,7 +36,7 @@ const NewItem: React.FC<NewItemProps> = ({ title, text, filePath, id, isFullVers
         )}
       </div>
       <div>
-        <img className="h-72" src={filePath || DefaultNewsIcon} alt={title} />
+        <img className="h-72" src={picture_news || DefaultNewsIcon} alt={title} />
       </div>
     </div>
   );

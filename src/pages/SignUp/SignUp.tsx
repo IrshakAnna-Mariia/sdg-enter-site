@@ -3,18 +3,45 @@ import { useNavigate } from 'react-router-dom';
 import SectionHeader from 'components/SectionHeader';
 import { PathName } from 'enums/pathNames';
 import Button from 'components/Button';
+import { useForm } from 'react-hook-form';
+import { ROLES } from './signUp.settings';
+import { usePostNewUserMutation } from 'store/api/apiSlice';
+import { UserProps } from 'store/user/user.types';
+import { toast } from 'react-toastify';
 
 const SignUp = () => {
   const navigate = useNavigate();
+  const [createUser] = usePostNewUserMutation();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    mode: 'onChange',
+    defaultValues: {
+      username: '',
+      email: '',
+      password: '',
+      role: ROLES[0].value,
+      phone: '',
+      birthdate: '',
+      first_name: '',
+      last_name: '',
+    },
+  });
 
-  const handleSubmit = () => {};
+  const onSubmit = (data: UserProps) => {
+    createUser({ body: data })
+      .unwrap()
+      .then(() => toast.success('Created user successfully'));
+  };
 
   const handleLogin = () => {
     navigate(PathName.Login);
   };
 
   return (
-    <div className="flex w-full flex-col">
+    <form className="flex w-full flex-col" onSubmit={handleSubmit(onSubmit)} onChange={() => console.log(errors)}>
       <SectionHeader title={'Sign up'} />
 
       <div className="mx-auto mb-8 h-px w-3/4 bg-orange" />
@@ -25,6 +52,16 @@ const SignUp = () => {
           <input
             className="h-12 w-full rounded-xl bg-gray-300 px-4 outline-none focus:shadow-xl"
             placeholder="Enter user name..."
+            {...register('username', { required: true })}
+          />
+        </div>
+
+        <div className="flex flex-col">
+          <label className="text-lg">Email</label>
+          <input
+            className="h-12 w-full rounded-xl bg-gray-300 px-4 outline-none focus:shadow-xl"
+            placeholder="Enter email..."
+            {...register('email', { required: true })}
           />
         </div>
 
@@ -33,18 +70,74 @@ const SignUp = () => {
           <input
             className="h-12 w-full rounded-xl bg-gray-300 px-4 outline-none focus:shadow-xl"
             placeholder="Enter password..."
+            type="password"
+            {...register('password', { required: true })}
           />
         </div>
 
-        <Button label={'Sign up'} onClick={handleSubmit} styleForm={'pill'} className="mx-auto" size="lg" />
+        <div className="flex flex-col">
+          <label className="text-lg">Role</label>
+          <select
+            {...register('role', { required: true })}
+            placeholder="Select role"
+            className="h-12 w-full select-none rounded-xl bg-gray-300 px-4 outline-none focus:shadow-xl focus:ring-0 focus:ring-offset-0"
+          >
+            {ROLES.map((role) => (
+              <option key={role.value} value={role.value}>
+                {role.label}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div className="flex flex-col">
+          <label className="text-lg">Phone</label>
+          <input
+            className="h-12 w-full rounded-xl bg-gray-300 px-4 outline-none focus:shadow-xl"
+            placeholder="Enter phone..."
+            type="tel"
+            {...register('phone', { required: true })}
+          />
+        </div>
+
+        <div className="flex flex-col">
+          <label className="text-lg">Birthday</label>
+          <input
+            className="h-12 w-full rounded-xl bg-gray-300 px-4 outline-none focus:shadow-xl"
+            placeholder="Enter birthdate..."
+            type="date"
+            {...register('birthdate', { required: true })}
+          />
+        </div>
+
+        <div className="flex flex-col">
+          <label className="text-lg">First name</label>
+          <input
+            className="h-12 w-full rounded-xl bg-gray-300 px-4 outline-none focus:shadow-xl"
+            placeholder="Enter first name..."
+            {...register('first_name', { required: true })}
+          />
+        </div>
+
+        <div className="flex flex-col">
+          <label className="text-lg">Last name</label>
+          <input
+            className="h-12 w-full rounded-xl bg-gray-300 px-4 outline-none focus:shadow-xl"
+            placeholder="Enter last name..."
+            {...register('last_name', { required: true })}
+          />
+        </div>
+
+        {!!Object.entries(errors).length && (
+          <p className="text-orange decoration-red-500 underline py-2 mx-auto max-w-fit text-lg">Please enter a valid data</p>
+        )}
+
+        <Button label={'Sign up'} styleForm={'pill'} className="mx-auto" size="lg" />
       </div>
-      <button
-        className="my-2 mx-auto max-w-fit border-b border-b-orange text-sm text-white"
-        onClick={handleLogin}
-      >
+      <button className="my-2 mx-auto max-w-fit border-b border-b-orange text-sm text-white" onClick={handleLogin}>
         Already have an account? Log In
       </button>
-    </div>
+    </form>
   );
 };
 

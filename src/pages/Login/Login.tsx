@@ -5,15 +5,15 @@ import { PathName } from 'enums/pathNames';
 
 const Login = () => {
   const navigate = useNavigate();
-  
+
   const handleSubmit = () => {};
 
   const handleSignUpAccount = () => {
     navigate(PathName.SignUp);
-  }
+  };
 
   return (
-    <div className="w-full flex flex-col">
+    <div className="flex w-full flex-col">
       <SectionHeader title={'Login'} />
 
       <div className="mx-auto mb-8 h-px w-3/4 bg-orange" />
@@ -37,7 +37,10 @@ const Login = () => {
 
         <Button label={'Log in'} onClick={handleSubmit} styleForm={'pill'} className="mx-auto" size="lg" />
       </div>
-      <button className="my-2 mx-auto max-w-fit border-b border-b-orange text-sm text-white" onClick={handleSignUpAccount}>
+      <button
+        className="my-2 mx-auto max-w-fit border-b border-b-orange text-sm text-white"
+        onClick={handleSignUpAccount}
+      >
         Don't have account? Click here!
       </button>
     </div>

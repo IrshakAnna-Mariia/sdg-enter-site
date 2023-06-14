@@ -1,8 +1,8 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 import Button from 'components/Button';
 import { ReactComponent as Spaceship } from 'icons/spaceship.svg';
-import { PathName } from "enums/pathNames";
+import { PathName } from 'enums/pathNames';
 
 const MainBanner = () => {
   const navigate = useNavigate();
@@ -12,7 +12,7 @@ const MainBanner = () => {
   };
 
   return (
-    <div className="relative flex min-h-screen w-full justify-center mt-32">
+    <div className="relative mt-32 flex min-h-screen w-full justify-center">
       <div className="font-bold text-white">
         <p className="font-chakraPetch text-5xl">THE BEST GAME ABOUT GALAXY</p>
         <p className="font-chakraPetch text-4xl">official WEB-site of SDG</p>

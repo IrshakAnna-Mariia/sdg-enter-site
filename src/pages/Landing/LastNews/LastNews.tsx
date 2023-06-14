@@ -1,9 +1,9 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 import Button from 'components/Button';
 import SectionHeader from 'components/SectionHeader';
 import ScrollBanner from './ScrollBanner';
-import { PathName } from "enums/pathNames";
+import { PathName } from 'enums/pathNames';
 
 export const LastNews = () => {
   const navigate = useNavigate();
@@ -13,7 +13,7 @@ export const LastNews = () => {
   };
 
   return (
-    <div className="flex min-h-screen flex-col items-center gap-16 mt-24">
+    <div className="mt-24 flex min-h-screen flex-col items-center gap-16">
       <SectionHeader title={'THE LAST NEWS'} />
       <div>
         <ScrollBanner />
