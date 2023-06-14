@@ -1,7 +1,7 @@
 export interface ButtonProps {
   disabled?: boolean;
   label: string;
-  onClick: () => void;
+  onClick?: () => void;
   styleForm: 'pill' | 'text';
   className?: string;
   size?: 'base' | 'lg';

@@ -12,6 +12,14 @@ export const apiSlice = createApi({
   baseQuery: baseQueryWithReauth,
   tagTypes: tagTypes,
   endpoints: (builder) => ({
+    postNewUser: builder.mutation<unknown, { body: UserProps }>({
+      query: ({ body }) => ({
+        url: `/register/`,
+        method: 'POST',
+        body,
+      }),
+    }),
+
     getMyProfile: builder.query<UserProps[], void>({
       query: () => `/my-profile`,
       providesTags: ['Profile'],
@@ -39,4 +47,4 @@ export const apiSlice = createApi({
   }),
 });
 
-export const { useUpdateMyProfileMutation, useLazyGetMyProfileQuery } = apiSlice;
+export const { usePostNewUserMutation, useUpdateMyProfileMutation, useLazyGetMyProfileQuery } = apiSlice;

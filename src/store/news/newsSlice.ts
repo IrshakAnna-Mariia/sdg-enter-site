@@ -7,8 +7,8 @@ const initialState: { news: News[] } = {
   news: [],
 };
 
-export const triggersSlice = createSlice({
-  name: 'triggers',
+export const newsSlice = createSlice({
+  name: 'news',
   initialState,
   reducers: {
     setNewsOptions(state, action: PayloadAction<News[]>) {
@@ -17,9 +17,9 @@ export const triggersSlice = createSlice({
   },
 });
 
-export const { setNewsOptions } = triggersSlice.actions;
+export const { setNewsOptions } = newsSlice.actions;
 
-export const triggersApiSlice = apiSlice.injectEndpoints({
+export const newsApiSlice = apiSlice.injectEndpoints({
   endpoints: (build) => ({
     getNews: build.query<News[], { params?: {} }>({
       query: ({ params }) => ({
@@ -75,6 +75,6 @@ export const {
   useCreateNewsItemMutation,
   useDeleteNewsItemMutation,
   useUpdateNewsItemMutation,
-} = triggersApiSlice;
+} = newsApiSlice;
 
-export default triggersSlice.reducer;
+export default newsSlice.reducer;
