@@ -41,7 +41,7 @@ const SignUp = () => {
   };
 
   return (
-    <form className="flex w-full flex-col" onSubmit={handleSubmit(onSubmit)} onChange={() => console.log(errors)}>
+    <form className="flex w-full flex-col" onSubmit={handleSubmit(onSubmit)}>
       <SectionHeader title={'Sign up'} />
 
       <div className="mx-auto mb-8 h-px w-3/4 bg-orange" />

@@ -3,7 +3,7 @@ import { createApi } from '@reduxjs/toolkit/query/react';
 import { setUser } from 'store/user/userSlice';
 import { baseQueryWithReauth } from 'utils/services';
 
-import { UserProps } from '../user/user.types';
+import { LoginProps, UserProps } from '../user/user.types';
 
 export const tagTypes = ['Profile', 'News'];
 
@@ -15,6 +15,13 @@ export const apiSlice = createApi({
     postNewUser: builder.mutation<unknown, { body: UserProps }>({
       query: ({ body }) => ({
         url: `/register/`,
+        method: 'POST',
+        body,
+      }),
+    }),
+    loginUser: builder.mutation<unknown, { body: LoginProps }>({
+      query: ({ body }) => ({
+        url: `/login/`,
         method: 'POST',
         body,
       }),
@@ -47,4 +54,4 @@ export const apiSlice = createApi({
   }),
 });
 
-export const { usePostNewUserMutation, useUpdateMyProfileMutation, useLazyGetMyProfileQuery } = apiSlice;
+export const { usePostNewUserMutation, useLoginUserMutation, useUpdateMyProfileMutation, useLazyGetMyProfileQuery } = apiSlice;

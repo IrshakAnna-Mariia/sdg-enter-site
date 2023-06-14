@@ -10,3 +10,8 @@ export interface UserProps {
   accessToken?: string;
   idToken?: string;
 }
+
+export interface LoginProps {
+  password: string;
+  username: string;
+}
