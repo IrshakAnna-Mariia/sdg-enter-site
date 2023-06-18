@@ -5,6 +5,7 @@ import SectionHeader from 'components/SectionHeader';
 import { PathName } from 'enums/pathNames';
 
 import CQSItem from './CQSItem';
+import { useAppSelector } from 'store';
 
 const cqsArray = [
   {
@@ -29,6 +30,7 @@ const cqsArray = [
 
 const CQS = () => {
   const navigate = useNavigate();
+  const { accessToken } = useAppSelector((state) => state.user);
 
   const handleAddCQS = () => {
     navigate(PathName.AddCQS);
@@ -36,7 +38,7 @@ const CQS = () => {
 
   return (
     <div className="mx-auto flex w-3/4 flex-col items-center gap-8">
-      <SectionHeader title="CQS" onAdd={handleAddCQS} />
+      <SectionHeader title="CQS" {...(accessToken && { onAdd: handleAddCQS })} />
       <SearchForm />
 
       {cqsArray.map((cqsItem) => (

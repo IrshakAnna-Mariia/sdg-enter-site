@@ -1,5 +1,3 @@
-import { Tooltip as ReactTooltip } from 'react-tooltip';
-
 import Button from 'components/Button';
 import SectionHeader from 'components/SectionHeader';
 import SpaceX from 'icons/spacex.png';
