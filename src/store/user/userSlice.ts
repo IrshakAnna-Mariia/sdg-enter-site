@@ -13,23 +13,21 @@ const initialState: UserProps = {
   first_name: '',
   last_name: '',
   accessToken: '',
-  idToken: '',
+  refreshToken: '',
 };
 
 const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    setToken: (
-      state,
-      { payload: { accessToken, idToken } }: PayloadAction<{ accessToken: string; idToken: string }>,
-    ) => {
-      state.accessToken = accessToken;
-      state.idToken = idToken;
+    setToken: (state, { payload: { access, refresh } }: PayloadAction<{ access: string; refresh: string }>) => {
+      state.accessToken = access;
+      state.refreshToken = refresh;
+      Cookies.set('access', access);
     },
     setUser: (state, action: PayloadAction<UserProps>) => {},
-    clearUser: (): UserProps => {
-      Cookies.remove('accessToken');
+    clearUser: () => {
+      Cookies.remove('access');
       return initialState;
     },
   },

@@ -8,7 +8,7 @@ export interface UserProps {
   first_name: string;
   last_name: string;
   accessToken?: string;
-  idToken?: string;
+  refreshToken?: string;
 }
 
 export interface LoginProps {

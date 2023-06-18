@@ -1,6 +1,6 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
 
-import { setUser } from 'store/user/userSlice';
+import { clearUser, setToken, setUser } from 'store/user/userSlice';
 import { baseQueryWithReauth } from 'utils/services';
 
 import { LoginProps, UserProps } from '../user/user.types';
@@ -19,12 +19,31 @@ export const apiSlice = createApi({
         body,
       }),
     }),
-    loginUser: builder.mutation<unknown, { body: LoginProps }>({
+    loginUser: builder.mutation<{ access: string; refresh: string }, { body: LoginProps }>({
       query: ({ body }) => ({
         url: `/login/`,
         method: 'POST',
         body,
       }),
+      async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+        const { data } = await queryFulfilled;
+        if (data && data.access) {
+          dispatch(setToken(data));
+        }
+      },
+    }),
+
+    logoutUser: builder.mutation<{ access: string; refresh: string }, void>({
+      query: () => ({
+        url: `/logout/`,
+        method: 'POST',
+      }),
+      async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+        const { data } = await queryFulfilled;
+        if (data && data.access) {
+          dispatch(clearUser());
+        }
+      },
     }),
 
     getMyProfile: builder.query<UserProps[], void>({
