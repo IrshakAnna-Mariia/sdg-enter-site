@@ -1,8 +1,13 @@
+import { Tooltip as ReactTooltip } from 'react-tooltip';
+
 import Button from 'components/Button';
 import SectionHeader from 'components/SectionHeader';
 import SpaceX from 'icons/spacex.png';
+import { useAppSelector } from 'store';
 
 const CQS = () => {
+  const { accessToken } = useAppSelector((state) => state.user);
+
   const handleSubmit = () => {};
 
   return (
@@ -34,7 +39,16 @@ const CQS = () => {
           <img className="w-96 rounded rounded-3xl" alt="spaceX" src={SpaceX} />
         </div>
 
-        <Button onClick={handleSubmit} label={'Submit'} styleForm={'pill'} size="base" className="px-14" />
+        {!accessToken && <span className="text-lg text-orange">You should be logged in</span>}
+        <Button
+          id={'create-cqs'}
+          onClick={handleSubmit}
+          disabled={!accessToken}
+          label={'Submit'}
+          styleForm={'pill'}
+          size="base"
+          className="px-14"
+        />
       </div>
     </div>
   );

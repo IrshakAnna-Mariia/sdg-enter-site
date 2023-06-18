@@ -6,4 +6,5 @@ export interface ButtonProps {
   className?: string;
   size?: 'base' | 'lg';
   postIcon?: boolean;
+  id?: string;
 }

@@ -3,7 +3,16 @@ import { ReactComponent as RowRight } from 'icons/rowRight.svg';
 
 import { ButtonProps } from './button.types';
 
-const Button: React.FC<ButtonProps> = ({ label, onClick, styleForm, className, size = 'base', disabled, postIcon }) => {
+const Button: React.FC<ButtonProps> = ({
+  label,
+  onClick,
+  styleForm,
+  className,
+  size = 'base',
+  disabled,
+  postIcon,
+  id,
+}) => {
   const buttonClasses = classNames(
     'w-fit font-sans flex gap-2 items-center',
     {
@@ -15,7 +24,7 @@ const Button: React.FC<ButtonProps> = ({ label, onClick, styleForm, className, s
   );
 
   return (
-    <button className={buttonClasses} onClick={onClick} disabled={disabled}>
+    <button className={buttonClasses} onClick={onClick} disabled={disabled} id={id}>
       {label}
       {postIcon && <RowRight className="h-4 w-4" />}
     </button>

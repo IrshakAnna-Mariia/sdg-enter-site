@@ -8,9 +8,11 @@ import { ROLES } from './signUp.settings';
 import { usePostNewUserMutation } from 'store/api/apiSlice';
 import { UserProps } from 'store/user/user.types';
 import { toast } from 'react-toastify';
+import { useAppSelector } from 'store';
 
 const SignUp = () => {
   const navigate = useNavigate();
+  const { accessToken } = useAppSelector((state) => state.user);
   const [createUser] = usePostNewUserMutation();
   const {
     register,
@@ -39,6 +41,8 @@ const SignUp = () => {
   const handleLogin = () => {
     navigate(PathName.Login);
   };
+
+  if (accessToken) navigate(PathName.Profile);
 
   return (
     <form className="flex w-full flex-col" onSubmit={handleSubmit(onSubmit)}>
