@@ -23,7 +23,7 @@ export const newsApiSlice = apiSlice.injectEndpoints({
   endpoints: (build) => ({
     getNews: build.query<News[], { params?: {} }>({
       query: ({ params }) => ({
-        url: `/news/`,
+        url: `/search/news`,
         params,
       }),
       async onQueryStarted(arg, { dispatch, queryFulfilled }) {
