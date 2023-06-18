@@ -5,10 +5,12 @@ import { useLocation, useNavigate, matchPath } from 'react-router-dom';
 import Button from 'components/Button';
 import { ReactComponent as Logo } from 'icons/logo.svg';
 import { PathName } from 'enums/pathNames';
+import { useAppSelector } from 'store';
 
 const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const { accessToken } = useAppSelector((state) => state.user);
 
   const handleClickLink = (path: PathName) => {
     navigate(path);
@@ -47,7 +49,11 @@ const Header = () => {
           onClick={() => handleClickLink(PathName.CQS)}
           styleForm={matchPath(PathName.CQS, location.pathname) ? 'pill' : 'text'}
         />
-        <Button label="Sign In" onClick={() => handleClickLink(PathName.Login)} styleForm="pill" />
+        {accessToken ? (
+          <Button label="My profile" onClick={() => handleClickLink(PathName.Profile)} styleForm="pill" />
+        ) : (
+          <Button label="Sign In" onClick={() => handleClickLink(PathName.Login)} styleForm="pill" />
+        )}
       </div>
     </header>
   );

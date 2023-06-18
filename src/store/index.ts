@@ -1,6 +1,7 @@
 import { AnyAction, combineReducers, configureStore, PreloadedState, Reducer } from '@reduxjs/toolkit';
 import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 
 import { apiSlice } from './api/apiSlice';
 import { rtkQueryErrorLogger } from './errorCatchingMiddleware/errorCatchingMiddleware';
@@ -41,3 +42,6 @@ export const persistor = persistStore(store);
 export type RootState = ReturnType<typeof appReducer>;
 export type AppStore = ReturnType<typeof setupStore>;
 export type AppDispatch = AppStore['dispatch'];
+
+export const useAppDispatch: () => AppDispatch = useDispatch;
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;

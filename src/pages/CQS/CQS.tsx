@@ -40,7 +40,7 @@ const CQS = () => {
       <SearchForm />
 
       {cqsArray.map((cqsItem) => (
-        <CQSItem {...cqsItem} />
+        <CQSItem {...cqsItem} key={cqsItem.id} />
       ))}
     </div>
   );

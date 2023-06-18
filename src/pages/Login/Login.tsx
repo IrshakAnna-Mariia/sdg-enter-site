@@ -6,9 +6,11 @@ import { useLoginUserMutation } from 'store/api/apiSlice';
 import { LoginProps } from 'store/user/user.types';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
+import { useAppSelector } from 'store';
 
 const Login = () => {
   const navigate = useNavigate();
+  const { accessToken } = useAppSelector((state) => state.user);
   const [login] = useLoginUserMutation();
   const {
     register,
@@ -31,6 +33,8 @@ const Login = () => {
   const handleSignUpAccount = () => {
     navigate(PathName.SignUp);
   };
+
+  if (accessToken) navigate(PathName.Profile);
 
   return (
     <form className="flex w-full flex-col" onSubmit={handleSubmit(onSubmit)}>
