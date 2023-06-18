@@ -34,7 +34,6 @@ const CQS = () => {
           <img className="w-96 rounded rounded-3xl" alt="spaceX" src={SpaceX} />
         </div>
 
-        {/* TODO: disable for unregister users */}
         <Button onClick={handleSubmit} label={'Submit'} styleForm={'pill'} size="base" className="px-14" />
       </div>
     </div>
