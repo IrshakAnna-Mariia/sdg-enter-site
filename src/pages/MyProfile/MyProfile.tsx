@@ -1,13 +1,17 @@
 import Button from 'components/Button';
 import SectionHeader from 'components/SectionHeader';
+import dayjs from 'dayjs';
 import { PathName } from 'enums/pathNames';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { useAppSelector } from 'store';
 import { useLogoutUserMutation } from 'store/api/apiSlice';
 
 const MyProfile = () => {
   const navigate = useNavigate();
   const [logout] = useLogoutUserMutation();
+  const user = useAppSelector((state) => state.user);
 
   const handleLogOut = () => {
     logout()
@@ -18,9 +22,51 @@ const MyProfile = () => {
       });
   };
 
+  useEffect(() => {
+    if (!user.accessToken) navigate(PathName.Login);
+  }, [navigate, user.accessToken]);
+
   return (
     <>
       <SectionHeader title="My Profile" />
+
+      <div className="mx-auto w-3/4 text-white flex flex-col gap-4">
+        <div className="flex justify-between align-center">
+          <p className="min-w-fit">First name</p>
+          <div className="w-full mx-3 border-dashed border-b border-white" />
+          <p className="min-w-fit">{user.first_name}</p>
+        </div>
+        <div className="flex justify-between">
+          <p className="min-w-fit">Last name</p>
+          <div className="w-full mx-3 border-dashed border-b border-white" />
+          <p className="min-w-fit">{user.last_name}</p>
+        </div>
+        <div className="flex justify-between">
+          <p className="min-w-fit">Username</p>
+          <div className="w-full mx-3 border-dashed border-b border-white" />
+          <p className="min-w-fit">{user.username}</p>
+        </div>
+        <div className="flex justify-between">
+          <p className="min-w-fit">Email</p>
+          <div className="w-full mx-3 border-dashed border-b border-white" />
+          <p className="min-w-fit">{user.email}</p>
+        </div>
+        <div className="flex justify-between">
+          <p className="min-w-fit">Birthdate</p>
+          <div className="w-full mx-3 border-dashed border-b border-white" />
+          <p className="min-w-fit">{dayjs(user.birthdate, 'YYYY-MM-DD').format('DD MMMM YYYY')}</p>
+        </div>
+        <div className="flex justify-between">
+          <p className="min-w-fit">Phone</p>
+          <div className="w-full mx-3 border-dashed border-b border-white" />
+          <p className="min-w-fit">{user.phone}</p>
+        </div>
+        <div className="flex justify-between">
+          <p className="min-w-fit">Role</p>
+          <div className="w-full mx-3 border-dashed border-b border-white" />
+          <p className="min-w-fit">{user.role}</p>
+        </div>
+      </div>
 
       <Button label="Log out" onClick={handleLogOut} styleForm="pill" size="lg" className="mx-auto mt-12" />
     </>
