@@ -33,10 +33,11 @@ export const apiSlice = createApi({
       },
     }),
 
-    logoutUser: builder.mutation<{ access: string; refresh: string }, void>({
-      query: () => ({
+    logoutUser: builder.mutation<{ access: string; refresh: string }, { refresh_token: string }>({
+      query: ({ refresh_token }) => ({
         url: `/logout/`,
         method: 'POST',
+        body: { refresh_token }
       }),
       async onQueryStarted(arg, { dispatch, queryFulfilled }) {
         const { data } = await queryFulfilled;
