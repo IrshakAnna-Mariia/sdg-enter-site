@@ -5,22 +5,20 @@ import { PathName } from 'enums/pathNames';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { useAppSelector } from 'store';
-import { useLogoutUserMutation } from 'store/api/apiSlice';
+import { useAppDispatch, useAppSelector } from 'store';
+import { clearUser } from 'store/user/userSlice';
 
 const MyProfile = () => {
   const navigate = useNavigate();
-  const [logout] = useLogoutUserMutation();
+  const dispatch = useAppDispatch();
   const user = useAppSelector((state) => state.user);
 
   const handleLogOut = () => {
-    user.refreshToken &&
-      logout({ refresh_token: user.refreshToken })
-        .unwrap()
-        .then(() => {
-          navigate(PathName.HomePage);
-          toast.success('Logout successfully');
-        });
+    if (user.refreshToken) {
+      dispatch(clearUser());
+      navigate(PathName.HomePage);
+      toast.success('Logout successfully');
+    }
   };
 
   useEffect(() => {
