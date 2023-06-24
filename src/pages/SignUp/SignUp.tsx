@@ -62,6 +62,7 @@ const SignUp = () => {
             placeholder="Enter user name..."
             {...register('username', { required: true })}
           />
+          {errors.username && <span className="pl-4 pt-2 text-sm text-orange">User name is required</span>}
         </div>
 
         <div className="flex flex-col">
@@ -71,6 +72,7 @@ const SignUp = () => {
             placeholder="Enter email..."
             {...register('email', { required: true })}
           />
+          {errors.email && <span className="pl-4 pt-2 text-sm text-orange">Email is required</span>}
         </div>
 
         <div className="flex flex-col">
@@ -81,6 +83,7 @@ const SignUp = () => {
             type="password"
             {...register('password', { required: true })}
           />
+          {errors.password && <span className="pl-4 pt-2 text-sm text-orange">Password is required</span>}
         </div>
 
         <div className="flex flex-col">
@@ -96,6 +99,7 @@ const SignUp = () => {
               </option>
             ))}
           </select>
+          {errors.role && <span className="pl-4 pt-2 text-sm text-orange">Role is required</span>}
         </div>
 
         <div className="flex flex-col">
@@ -106,6 +110,7 @@ const SignUp = () => {
             type="tel"
             {...register('phone', { required: true })}
           />
+          {errors.phone && <span className="pl-4 pt-2 text-sm text-orange">Phone is required</span>}
         </div>
 
         <div className="flex flex-col">
@@ -116,6 +121,7 @@ const SignUp = () => {
             type="date"
             {...register('birthdate', { required: true })}
           />
+          {errors.birthdate && <span className="pl-4 pt-2 text-sm text-orange">Birthday is required</span>}
         </div>
 
         <div className="flex flex-col">
@@ -125,6 +131,7 @@ const SignUp = () => {
             placeholder="Enter first name..."
             {...register('first_name', { required: true })}
           />
+          {errors.first_name && <span className="pl-4 pt-2 text-sm text-orange">First name is required</span>}
         </div>
 
         <div className="flex flex-col">
@@ -134,6 +141,7 @@ const SignUp = () => {
             placeholder="Enter last name..."
             {...register('last_name', { required: true })}
           />
+          {errors.last_name && <span className="pl-4 pt-2 text-sm text-orange">Last name is required</span>}
         </div>
 
         {!!Object.entries(errors).length && (
@@ -144,7 +152,11 @@ const SignUp = () => {
 
         <Button label={'Sign up'} styleForm={'pill'} className="mx-auto" size="lg" />
       </div>
-      <button className="my-2 mx-auto max-w-fit border-b border-b-orange text-sm text-white" onClick={handleLogin}>
+      <button
+        type="button"
+        className="my-2 mx-auto max-w-fit border-b border-b-orange text-sm text-white"
+        onClick={handleLogin}
+      >
         Already have an account? Log In
       </button>
     </form>

@@ -50,6 +50,7 @@ const CQS = () => {
                 placeholder="Enter title..."
                 {...register('title', { required: true })}
               />
+              {errors.title && <span className="pl-4 pt-2 text-sm text-orange">Topic is required</span>}
             </div>
             <div className="flex flex-col">
               <label className="text-lg">Comment</label>
@@ -60,6 +61,7 @@ const CQS = () => {
                 rows={7}
                 maxLength={300}
               />
+              {errors.text && <span className="pl-4 pt-2 text-sm text-orange">Comment is required</span>}
             </div>
           </div>
           <img className="w-96 rounded rounded-3xl" alt="spaceX" src={SpaceX} />

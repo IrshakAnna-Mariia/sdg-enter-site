@@ -75,6 +75,7 @@ const NewsEdit = () => {
             maxLength={64}
             {...register('title', { required: true })}
           />
+          {errors.title && <span className="pl-4 pt-2 text-sm text-orange">Title is required</span>}
         </div>
 
         <div className="flex flex-col">
@@ -85,6 +86,7 @@ const NewsEdit = () => {
             maxLength={640}
             {...register('text', { required: true })}
           />
+          {errors.text && <span className="pl-4 pt-2 text-sm text-orange">Text is required</span>}
         </div>
 
         <div className="flex flex-col">

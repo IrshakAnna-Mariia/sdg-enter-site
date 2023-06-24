@@ -14,6 +14,7 @@ const initialState: UserProps = {
   last_name: '',
   accessToken: '',
   refreshToken: '',
+  level: '',
 };
 
 const userSlice = createSlice({

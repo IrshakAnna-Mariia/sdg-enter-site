@@ -7,4 +7,5 @@ export interface ButtonProps {
   size?: 'base' | 'lg';
   postIcon?: boolean;
   id?: string;
+  type?: 'submit' | 'button' | 'reset';
 }

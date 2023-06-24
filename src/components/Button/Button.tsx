@@ -11,6 +11,7 @@ const Button: React.FC<ButtonProps> = ({
   size = 'base',
   disabled,
   postIcon,
+  type,
   id,
 }) => {
   const buttonClasses = classNames(
@@ -24,7 +25,7 @@ const Button: React.FC<ButtonProps> = ({
   );
 
   return (
-    <button className={buttonClasses} onClick={onClick} disabled={disabled} id={id}>
+    <button className={buttonClasses} type={type} onClick={onClick} disabled={disabled} id={id}>
       {label}
       {postIcon && <RowRight className="h-4 w-4" />}
     </button>

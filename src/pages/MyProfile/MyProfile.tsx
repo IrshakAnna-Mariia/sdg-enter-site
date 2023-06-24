@@ -65,6 +65,11 @@ const MyProfile = () => {
           <div className="mx-3 w-full border-b border-dashed border-white" />
           <p className="min-w-fit">{user.role}</p>
         </div>
+        <div className="flex justify-between">
+          <p className="min-w-fit">Level</p>
+          <div className="mx-3 w-full border-b border-dashed border-white" />
+          <p className="min-w-fit">{user.level}</p>
+        </div>
       </div>
 
       <Button label="Log out" onClick={handleLogOut} styleForm="pill" size="lg" className="mx-auto mt-12" />

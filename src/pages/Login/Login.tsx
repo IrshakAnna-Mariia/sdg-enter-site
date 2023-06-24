@@ -50,6 +50,7 @@ const Login = () => {
             placeholder="Enter user name..."
             {...register('username', { required: true })}
           />
+          {errors.username && <span className="pl-4 pt-2 text-sm text-orange">User name is required</span>}
         </div>
 
         <div className="flex flex-col">
@@ -57,8 +58,10 @@ const Login = () => {
           <input
             className="h-12 w-full rounded-xl bg-gray-300 px-4 outline-none focus:shadow-xl"
             placeholder="Enter password..."
+            type="password"
             {...register('password', { required: true })}
           />
+          {errors.password && <span className="pl-4 pt-2 text-sm text-orange">Password is required</span>}
         </div>
 
         {!!Object.entries(errors).length && (
@@ -70,6 +73,7 @@ const Login = () => {
         <Button label={'Log in'} styleForm={'pill'} className="mx-auto" size="lg" />
       </div>
       <button
+        type="button"
         className="my-2 mx-auto max-w-fit border-b border-b-orange text-sm text-white"
         onClick={handleSignUpAccount}
       >

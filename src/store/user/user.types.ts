@@ -7,6 +7,7 @@ export interface UserBody {
   birthdate?: string;
   first_name: string;
   last_name: string;
+  level?: string;
 }
 
 export interface UserProps extends UserBody {
