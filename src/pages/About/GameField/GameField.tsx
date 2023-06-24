@@ -20,13 +20,7 @@ const GameField = () => {
 
   return (
     <div className="flex w-full flex-col items-center gap-4">
-      <Button
-        label={initialize ? 'Hide game' : 'Play now (soon)'}
-        onClick={handleOpenDemo}
-        styleForm={'pill'}
-        size="lg"
-        disabled
-      />
+      <Button label={initialize ? 'Hide game' : 'Try a Sample'} onClick={handleOpenDemo} styleForm={'pill'} size="lg" />
       <IonPhaser ref={gameRef} game={config as GameInstance} initialize={initialize} />
     </div>
   );
