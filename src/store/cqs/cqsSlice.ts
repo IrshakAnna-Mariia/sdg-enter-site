@@ -22,7 +22,7 @@ export const cqsApiSlice = apiSlice.injectEndpoints({
   endpoints: (build) => ({
     getCQS: build.query<CQSBody[], { params?: {} }>({
       query: ({ params }) => ({
-        url: `/questionAndSuggestion/`,
+        url: `/search/questions`,
         params,
       }),
       async onQueryStarted(arg, { dispatch, queryFulfilled }) {

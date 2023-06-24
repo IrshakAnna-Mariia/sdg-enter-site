@@ -3,13 +3,13 @@ import Cookies from 'js-cookie';
 
 export const baseQuery = fetchBaseQuery({
   baseUrl: process.env.REACT_APP_API_URL,
-  mode: "cors",
-  credentials: "same-origin",
+  mode: 'cors',
+  credentials: 'same-origin',
   prepareHeaders: async (headers, api) => {
     const access = Cookies.get('access');
 
     if (access) {
-        headers.set("Autorization", `Bearer ${access}`);
+      headers.set('Autorization', 'Bearer ' + access);
     }
 
     return headers;

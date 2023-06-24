@@ -37,7 +37,7 @@ export const apiSlice = createApi({
       query: ({ refresh_token }) => ({
         url: `/logout/`,
         method: 'POST',
-        body: { refresh_token }
+        body: { refresh_token: 'Bearer ' + refresh_token },
       }),
       async onQueryStarted(arg, { dispatch, queryFulfilled }) {
         const { data } = await queryFulfilled;
@@ -62,9 +62,5 @@ export const apiSlice = createApi({
   }),
 });
 
-export const {
-  usePostNewUserMutation,
-  useLoginUserMutation,
-  useLogoutUserMutation,
-  useUpdateMyProfileMutation,
-} = apiSlice;
+export const { usePostNewUserMutation, useLoginUserMutation, useLogoutUserMutation, useUpdateMyProfileMutation } =
+  apiSlice;
