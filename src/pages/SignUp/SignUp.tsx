@@ -9,11 +9,12 @@ import { usePostNewUserMutation } from 'store/api/apiSlice';
 import { UserProps } from 'store/user/user.types';
 import { toast } from 'react-toastify';
 import { useAppSelector } from 'store';
+import Loader from 'components/Loader';
 
 const SignUp = () => {
   const navigate = useNavigate();
   const { accessToken } = useAppSelector((state) => state.user);
-  const [createUser] = usePostNewUserMutation();
+  const [createUser, { isLoading }] = usePostNewUserMutation();
   const {
     register,
     handleSubmit,
@@ -50,6 +51,7 @@ const SignUp = () => {
 
   return (
     <form className="flex w-full flex-col" onSubmit={handleSubmit(onSubmit)}>
+      <Loader isVisible={isLoading} />
       <SectionHeader title={'Sign up'} />
 
       <div className="mx-auto mb-8 h-px w-3/4 bg-orange" />
@@ -154,6 +156,7 @@ const SignUp = () => {
       </div>
       <button
         type="button"
+        disabled={isLoading}
         className="my-2 mx-auto max-w-fit border-b border-b-orange text-sm text-white"
         onClick={handleLogin}
       >

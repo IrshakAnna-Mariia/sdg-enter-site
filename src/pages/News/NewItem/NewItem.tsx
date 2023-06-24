@@ -8,11 +8,12 @@ import { NewItemProps } from './newItem.types';
 import classNames from 'classnames';
 import { useDeleteNewsItemMutation } from 'store/news/newsSlice';
 import { useAppSelector } from 'store';
+import Loader from 'components/Loader';
 
 const NewItem: React.FC<NewItemProps> = ({ title, text, picture_news, id, isFullVersion }) => {
   const navigate = useNavigate();
   const { role } = useAppSelector((state) => state.user);
-  const [deleteNews] = useDeleteNewsItemMutation();
+  const [deleteNews, { isLoading }] = useDeleteNewsItemMutation();
 
   const textClasses = classNames('text-justify text-base', !isFullVersion && 'max-h-24 overflow-hidden');
   const deleteAndEditButtonsClassNames = classNames(
@@ -34,6 +35,7 @@ const NewItem: React.FC<NewItemProps> = ({ title, text, picture_news, id, isFull
 
   return (
     <div className="relative flex w-full justify-between gap-4 rounded-xl bg-white p-9">
+      <Loader isVisible={isLoading} />
       <div className="flex w-1/2 flex-col gap-8">
         {!isFullVersion && <h2 className="text-2xl font-bold">{title}</h2>}
         <div className="flex h-full flex-col justify-between">
@@ -44,7 +46,7 @@ const NewItem: React.FC<NewItemProps> = ({ title, text, picture_news, id, isFull
           {role === 'admin' && (
             <div className={deleteAndEditButtonsClassNames}>
               <Button label={'Edit'} onClick={handleEdit} styleForm={'pill'} size="base" />
-              <Button label={'Delete'} onClick={handleDelete} styleForm={'pill'} size="base" />
+              <Button label={'Delete'} onClick={handleDelete} disabled={isLoading} styleForm={'pill'} size="base" />
             </div>
           )}
         </div>

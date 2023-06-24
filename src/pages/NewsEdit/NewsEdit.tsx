@@ -1,4 +1,5 @@
 import Button from 'components/Button';
+import Loader from 'components/Loader';
 import SectionHeader from 'components/SectionHeader';
 import { PathName } from 'enums/pathNames';
 import { useState, useEffect } from 'react';
@@ -63,6 +64,7 @@ const NewsEdit = () => {
 
   return (
     <form className="flex w-full flex-col" onSubmit={handleSubmit(onSubmit)}>
+      <Loader isVisible={isLoading} />
       <SectionHeader title={isLoading ? 'Loading...' : newsId ? 'Update news' : 'Create news'} />
 
       <div className="mx-auto mb-8 h-px w-3/4 bg-orange" />
@@ -113,7 +115,13 @@ const NewsEdit = () => {
           </p>
         )}
 
-        <Button label={'Submit'} disabled={role !== 'admin'} styleForm={'pill'} className="mx-auto" size="lg" />
+        <Button
+          label={'Submit'}
+          disabled={role !== 'admin' || isLoading}
+          styleForm={'pill'}
+          className="mx-auto"
+          size="lg"
+        />
 
         {role !== 'admin' && (
           <p className="mx-auto max-w-fit py-2 text-lg text-orange underline decoration-red-500">

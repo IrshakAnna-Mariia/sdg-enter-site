@@ -8,6 +8,7 @@ import { useAppSelector } from 'store';
 import NewItem from './NewItem';
 import { PathName } from 'enums/pathNames';
 import { useEffect } from 'react';
+import Loader from 'components/Loader';
 
 const News = () => {
   const navigate = useNavigate();
@@ -26,6 +27,7 @@ const News = () => {
 
   return (
     <div className="mx-auto flex w-3/4 flex-col items-center gap-8">
+      <Loader isVisible={isLoading} />
       <SectionHeader title="The news" {...(role === 'admin' ? { onAdd: () => navigate(PathName.NewsCreate) } : {})} />
       <SearchForm onSubmit={onSubmitSearchForm} />
 
