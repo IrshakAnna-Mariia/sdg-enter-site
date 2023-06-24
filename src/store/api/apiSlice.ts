@@ -1,9 +1,9 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
 
-import { setUser } from 'store/user/userSlice';
+import { clearUser, setUser } from 'store/user/userSlice';
 import { baseQueryWithReauth } from 'utils/services';
 
-import { UserProps } from '../user/user.types';
+import { LoginProps, UserBody, UserProps } from '../user/user.types';
 
 export const tagTypes = ['Profile', 'News'];
 
@@ -19,15 +19,30 @@ export const apiSlice = createApi({
         body,
       }),
     }),
-
-    getMyProfile: builder.query<UserProps[], void>({
-      query: () => `/my-profile`,
-      providesTags: ['Profile'],
-      transformResponse: (response: { data: UserProps[] }) => response.data,
+    loginUser: builder.mutation<{ access: string; refresh: string; user: UserBody }, { body: LoginProps }>({
+      query: ({ body }) => ({
+        url: `/login/`,
+        method: 'POST',
+        body,
+      }),
       async onQueryStarted(arg, { dispatch, queryFulfilled }) {
         const { data } = await queryFulfilled;
-        if (data && data.length) {
-          dispatch(setUser({ ...data[0] }));
+        if (data && data.access) {
+          dispatch(setUser(data));
+        }
+      },
+    }),
+
+    logoutUser: builder.mutation<{ access: string; refresh: string }, { refresh_token: string }>({
+      query: ({ refresh_token }) => ({
+        url: `/logout/`,
+        method: 'POST',
+        body: { refresh_token: 'Bearer ' + refresh_token },
+      }),
+      async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+        const { data } = await queryFulfilled;
+        if (data && data.access) {
+          dispatch(clearUser());
         }
       },
     }),
@@ -47,4 +62,5 @@ export const apiSlice = createApi({
   }),
 });
 
-export const { usePostNewUserMutation, useUpdateMyProfileMutation, useLazyGetMyProfileQuery } = apiSlice;
+export const { usePostNewUserMutation, useLoginUserMutation, useLogoutUserMutation, useUpdateMyProfileMutation } =
+  apiSlice;

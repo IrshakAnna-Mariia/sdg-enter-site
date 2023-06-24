@@ -1,6 +1,6 @@
 export interface CQSItemProps {
   title: string;
   text: string;
-  userName: string;
+  user: string;
   id: string;
 }

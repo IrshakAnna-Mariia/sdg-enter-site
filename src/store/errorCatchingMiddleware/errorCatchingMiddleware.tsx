@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 
 export const rtkQueryErrorLogger: Middleware = () => (next) => (action) => {
   if (isRejectedWithValue(action)) {
-    const errorMessage = action.payload.data?.message || action.payload.message || 'Something went wrong...';
+    const errorMessage = action.payload.error || action.payload.message || 'Something went wrong...';
     toast.error(errorMessage);
   }
 

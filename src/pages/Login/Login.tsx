@@ -2,18 +2,42 @@ import { useNavigate } from 'react-router-dom';
 import Button from 'components/Button';
 import SectionHeader from 'components/SectionHeader';
 import { PathName } from 'enums/pathNames';
+import { useLoginUserMutation } from 'store/api/apiSlice';
+import { LoginProps } from 'store/user/user.types';
+import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
+import { useAppSelector } from 'store';
 
 const Login = () => {
   const navigate = useNavigate();
+  const { accessToken } = useAppSelector((state) => state.user);
+  const [login] = useLoginUserMutation();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    mode: 'onChange',
+    defaultValues: {
+      username: '',
+      password: '',
+    },
+  });
 
-  const handleSubmit = () => {};
+  const onSubmit = (data: LoginProps) => {
+    login({ body: data })
+      .unwrap()
+      .then(() => toast.success('Login successfully'));
+  };
 
   const handleSignUpAccount = () => {
     navigate(PathName.SignUp);
   };
 
+  if (accessToken) navigate(PathName.Profile);
+
   return (
-    <div className="flex w-full flex-col">
+    <form className="flex w-full flex-col" onSubmit={handleSubmit(onSubmit)}>
       <SectionHeader title={'Login'} />
 
       <div className="mx-auto mb-8 h-px w-3/4 bg-orange" />
@@ -24,7 +48,9 @@ const Login = () => {
           <input
             className="h-12 w-full rounded-xl bg-gray-300 px-4 outline-none focus:shadow-xl"
             placeholder="Enter user name..."
+            {...register('username', { required: true })}
           />
+          {errors.username && <span className="pl-4 pt-2 text-sm text-orange">User name is required</span>}
         </div>
 
         <div className="flex flex-col">
@@ -32,18 +58,28 @@ const Login = () => {
           <input
             className="h-12 w-full rounded-xl bg-gray-300 px-4 outline-none focus:shadow-xl"
             placeholder="Enter password..."
+            type="password"
+            {...register('password', { required: true })}
           />
+          {errors.password && <span className="pl-4 pt-2 text-sm text-orange">Password is required</span>}
         </div>
 
-        <Button label={'Log in'} onClick={handleSubmit} styleForm={'pill'} className="mx-auto" size="lg" />
+        {!!Object.entries(errors).length && (
+          <p className="mx-auto max-w-fit py-2 text-lg text-orange underline decoration-red-500">
+            Please enter a valid data
+          </p>
+        )}
+
+        <Button label={'Log in'} styleForm={'pill'} className="mx-auto" size="lg" />
       </div>
       <button
+        type="button"
         className="my-2 mx-auto max-w-fit border-b border-b-orange text-sm text-white"
         onClick={handleSignUpAccount}
       >
         Don't have account? Click here!
       </button>
-    </div>
+    </form>
   );
 };
 

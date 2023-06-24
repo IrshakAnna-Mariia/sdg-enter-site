@@ -1,4 +1,4 @@
-export interface UserProps {
+export interface UserBody {
   username: string;
   email: string;
   password: string;
@@ -7,6 +7,15 @@ export interface UserProps {
   birthdate?: string;
   first_name: string;
   last_name: string;
+  level?: string;
+}
+
+export interface UserProps extends UserBody {
   accessToken?: string;
-  idToken?: string;
+  refreshToken?: string;
+}
+
+export interface LoginProps {
+  password: string;
+  username: string;
 }

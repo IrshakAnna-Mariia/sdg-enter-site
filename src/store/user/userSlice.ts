@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import Cookies from 'js-cookie';
 
-import { UserProps } from './user.types';
+import { UserBody, UserProps } from './user.types';
 
 const initialState: UserProps = {
   username: '',
@@ -13,23 +13,25 @@ const initialState: UserProps = {
   first_name: '',
   last_name: '',
   accessToken: '',
-  idToken: '',
+  refreshToken: '',
+  level: '',
 };
 
 const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    setToken: (
-      state,
-      { payload: { accessToken, idToken } }: PayloadAction<{ accessToken: string; idToken: string }>,
-    ) => {
-      state.accessToken = accessToken;
-      state.idToken = idToken;
+    setToken: (state, { payload: { access, refresh } }: PayloadAction<{ access: string; refresh: string }>) => {
+      state.accessToken = access;
+      state.refreshToken = refresh;
+      Cookies.set('access', access);
     },
-    setUser: (state, action: PayloadAction<UserProps>) => {},
-    clearUser: (): UserProps => {
-      Cookies.remove('accessToken');
+    setUser: (state, action: PayloadAction<{ access: string; refresh: string; user: UserBody }>) => {
+      Cookies.set('access', action.payload.access);
+      return { accessToken: action.payload.access, refreshToken: action.payload.refresh, ...action.payload.user };
+    },
+    clearUser: () => {
+      Cookies.remove('access');
       return initialState;
     },
   },

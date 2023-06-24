@@ -3,16 +3,16 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { News } from './news.types';
 import { apiSlice } from '../api/apiSlice';
 
-const initialState: { news: News[] } = {
-  news: [],
+const initialState: { allNews: News[] } = {
+  allNews: [],
 };
 
 export const newsSlice = createSlice({
-  name: 'news',
+  name: '/search/news',
   initialState,
   reducers: {
     setNewsOptions(state, action: PayloadAction<News[]>) {
-      state.news = action.payload;
+      state.allNews = action.payload;
     },
   },
 });
@@ -21,9 +21,9 @@ export const { setNewsOptions } = newsSlice.actions;
 
 export const newsApiSlice = apiSlice.injectEndpoints({
   endpoints: (build) => ({
-    getNews: build.query<News[], { params?: {} }>({
+    getNews: build.query<News[], { params?: { [key: string]: string } }>({
       query: ({ params }) => ({
-        url: `/news/`,
+        url: `/search/news/`,
         params,
       }),
       async onQueryStarted(arg, { dispatch, queryFulfilled }) {
@@ -43,7 +43,7 @@ export const newsApiSlice = apiSlice.injectEndpoints({
 
     createNewsItem: build.mutation({
       query: ({ body }) => ({
-        url: `/news`,
+        url: `/search/news/`,
         method: 'POST',
         body,
       }),
@@ -52,16 +52,16 @@ export const newsApiSlice = apiSlice.injectEndpoints({
 
     updateNewsItem: build.mutation({
       query: ({ id, body }) => ({
-        url: `/news/${id}`,
+        url: `newsUpdate/${id}/`,
         method: 'PUT',
         body: body,
       }),
       invalidatesTags: (result, error, arg) => [{ type: 'News', id: arg.id }],
     }),
 
-    deleteNewsItem: build.mutation<{ message: string }, { id: string }>({
+    deleteNewsItem: build.mutation<{ message: string }, { id: number }>({
       query: ({ id }) => ({
-        url: `/news/${id}`,
+        url: `/newsDelete/${id}`,
         method: 'DELETE',
       }),
       invalidatesTags: ['News'],
@@ -71,6 +71,7 @@ export const newsApiSlice = apiSlice.injectEndpoints({
 
 export const {
   useGetNewsQuery,
+  useLazyGetNewsQuery,
   useLazyGetNewsItemByIdQuery,
   useCreateNewsItemMutation,
   useDeleteNewsItemMutation,

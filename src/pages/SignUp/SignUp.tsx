@@ -8,14 +8,17 @@ import { ROLES } from './signUp.settings';
 import { usePostNewUserMutation } from 'store/api/apiSlice';
 import { UserProps } from 'store/user/user.types';
 import { toast } from 'react-toastify';
+import { useAppSelector } from 'store';
 
 const SignUp = () => {
   const navigate = useNavigate();
+  const { accessToken } = useAppSelector((state) => state.user);
   const [createUser] = usePostNewUserMutation();
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm({
     mode: 'onChange',
     defaultValues: {
@@ -33,15 +36,20 @@ const SignUp = () => {
   const onSubmit = (data: UserProps) => {
     createUser({ body: data })
       .unwrap()
-      .then(() => toast.success('Created user successfully'));
+      .then(() => {
+        reset();
+        toast.success('Created user successfully');
+      });
   };
 
   const handleLogin = () => {
     navigate(PathName.Login);
   };
 
+  if (accessToken) navigate(PathName.Profile);
+
   return (
-    <form className="flex w-full flex-col" onSubmit={handleSubmit(onSubmit)} onChange={() => console.log(errors)}>
+    <form className="flex w-full flex-col" onSubmit={handleSubmit(onSubmit)}>
       <SectionHeader title={'Sign up'} />
 
       <div className="mx-auto mb-8 h-px w-3/4 bg-orange" />
@@ -54,6 +62,7 @@ const SignUp = () => {
             placeholder="Enter user name..."
             {...register('username', { required: true })}
           />
+          {errors.username && <span className="pl-4 pt-2 text-sm text-orange">User name is required</span>}
         </div>
 
         <div className="flex flex-col">
@@ -63,6 +72,7 @@ const SignUp = () => {
             placeholder="Enter email..."
             {...register('email', { required: true })}
           />
+          {errors.email && <span className="pl-4 pt-2 text-sm text-orange">Email is required</span>}
         </div>
 
         <div className="flex flex-col">
@@ -73,6 +83,7 @@ const SignUp = () => {
             type="password"
             {...register('password', { required: true })}
           />
+          {errors.password && <span className="pl-4 pt-2 text-sm text-orange">Password is required</span>}
         </div>
 
         <div className="flex flex-col">
@@ -88,6 +99,7 @@ const SignUp = () => {
               </option>
             ))}
           </select>
+          {errors.role && <span className="pl-4 pt-2 text-sm text-orange">Role is required</span>}
         </div>
 
         <div className="flex flex-col">
@@ -98,6 +110,7 @@ const SignUp = () => {
             type="tel"
             {...register('phone', { required: true })}
           />
+          {errors.phone && <span className="pl-4 pt-2 text-sm text-orange">Phone is required</span>}
         </div>
 
         <div className="flex flex-col">
@@ -108,6 +121,7 @@ const SignUp = () => {
             type="date"
             {...register('birthdate', { required: true })}
           />
+          {errors.birthdate && <span className="pl-4 pt-2 text-sm text-orange">Birthday is required</span>}
         </div>
 
         <div className="flex flex-col">
@@ -117,6 +131,7 @@ const SignUp = () => {
             placeholder="Enter first name..."
             {...register('first_name', { required: true })}
           />
+          {errors.first_name && <span className="pl-4 pt-2 text-sm text-orange">First name is required</span>}
         </div>
 
         <div className="flex flex-col">
@@ -126,15 +141,22 @@ const SignUp = () => {
             placeholder="Enter last name..."
             {...register('last_name', { required: true })}
           />
+          {errors.last_name && <span className="pl-4 pt-2 text-sm text-orange">Last name is required</span>}
         </div>
 
         {!!Object.entries(errors).length && (
-          <p className="text-orange decoration-red-500 underline py-2 mx-auto max-w-fit text-lg">Please enter a valid data</p>
+          <p className="mx-auto max-w-fit py-2 text-lg text-orange underline decoration-red-500">
+            Please enter a valid data
+          </p>
         )}
 
         <Button label={'Sign up'} styleForm={'pill'} className="mx-auto" size="lg" />
       </div>
-      <button className="my-2 mx-auto max-w-fit border-b border-b-orange text-sm text-white" onClick={handleLogin}>
+      <button
+        type="button"
+        className="my-2 mx-auto max-w-fit border-b border-b-orange text-sm text-white"
+        onClick={handleLogin}
+      >
         Already have an account? Log In
       </button>
     </form>

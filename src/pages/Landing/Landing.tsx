@@ -10,7 +10,7 @@ const Landing = () => {
       <MainBanner />
       <AboutGame />
       <LastNews />
-      <RoadMap />
+      <RoadMap isLanding />
       <CQS />
     </>
   );
