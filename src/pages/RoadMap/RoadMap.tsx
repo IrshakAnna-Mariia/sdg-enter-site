@@ -2,6 +2,8 @@ import { motion } from 'framer-motion';
 import { Tooltip as ReactTooltip } from 'react-tooltip';
 
 import RoadMapSection from 'pages/Landing/RoadMap';
+import { useNavigate } from 'react-router-dom';
+import { PathName } from 'enums/pathNames';
 
 const textContainer = {
   animate: {
@@ -14,6 +16,12 @@ const textContainer = {
 };
 
 const RoadMap = () => {
+  const navigate = useNavigate();
+
+  const handleClickNews = (newsId: number) => {
+    navigate(`${PathName.News}/${newsId}`);
+  };
+
   return (
     <div className="flex flex-col gap-8 px-12 text-white">
       <RoadMapSection />
@@ -26,9 +34,13 @@ const RoadMap = () => {
       <ReactTooltip anchorId="development" place="bottom" content="Now we at development stage" />
       <ReactTooltip anchorId="beta-test" place="bottom" content="To be continued" />
       <ReactTooltip anchorId="enjoy" place="bottom" content="To be continued" />
-      <p className="pt-8">- Our idea was created ~ on April of 2021 by Vitalii Diduk</p>
-      <p>- First time we presented this idea was on May 27, 2021 in Noosphere, Cherkasy</p>
-      <div className="flex">
+      <p className="pt-8" onClick={() => handleClickNews(5)}>
+        - Our idea was created ~ on April of 2021 by Vitalii Diduk
+      </p>
+      <p onClick={() => handleClickNews(6)}>
+        - First time we presented this idea was on May 27, 2021 in Noosphere, Cherkasy
+      </p>
+      <div onClick={() => handleClickNews(7)} className="flex">
         - Now we at development stage
         <motion.div initial="initial" animate="animate" className="pl-2" variants={textContainer}>
           _
