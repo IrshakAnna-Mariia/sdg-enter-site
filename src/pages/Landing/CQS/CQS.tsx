@@ -77,7 +77,7 @@ const CQS = () => {
 
         <Button
           id={'create-cqs'}
-          disabled={(!!Object.entries(errors).length && !user.accessToken) || isLoading}
+          disabled={!!Object.entries(errors).length || !user.accessToken || isLoading}
           label={'Submit'}
           styleForm={'pill'}
           size="base"
