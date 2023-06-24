@@ -17,11 +17,11 @@ const News = () => {
   const isLoadingData = isFetching || isUninitialized || isLoading;
 
   const onSubmitSearchForm = (data: { keyword: string }) => {
-    getNews({ params: { search: data.keyword || '' } })
+    getNews({ params: { search: data.keyword || '' } });
   };
 
   useEffect(() => {
-    getNews({ params: { search: '' } })
+    getNews({ params: { search: '' } });
   }, [getNews]);
 
   return (

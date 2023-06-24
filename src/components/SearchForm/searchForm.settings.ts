@@ -1,3 +1,1 @@
-export const CATEGORIES = [
-  { label: 'All categories', value: 'searchKey' },
-];
+export const CATEGORIES = [{ label: 'All categories', value: 'searchKey' }];

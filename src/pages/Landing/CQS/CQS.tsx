@@ -26,10 +26,12 @@ const CQS = () => {
   });
 
   const onSubmit = (data: { text: string; title: string }) => {
-    createCQS({ ...data, user }).unwrap().then(() => {
-      navigate(PathName.CQS);
-      toast.success('Created successfully');
-    });
+    createCQS({ ...data, user })
+      .unwrap()
+      .then(() => {
+        navigate(PathName.CQS);
+        toast.success('Created successfully');
+      });
   };
 
   return (
