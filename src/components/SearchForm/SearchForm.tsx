@@ -5,13 +5,13 @@ import { ReactComponent as SearchIcon } from 'icons/searchIcon.svg';
 
 import { CATEGORIES } from './searchForm.settings';
 
-const SearchForm = () => {
+const SearchForm: React.FC<{ onSubmit: (data: { keyword: string }) => void }> = ({ onSubmit }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({ mode: 'onChange', defaultValues: { keyword: '', category: CATEGORIES[0].value } });
-  const onSubmit = (data: {}) => console.log(data);
+
   return (
     <form className="relative mb-16 flex w-full rounded-xl bg-white p-4" onSubmit={handleSubmit(onSubmit)}>
       <SearchIcon className="absolute top-8 left-8 h-4 w-4" />
@@ -19,7 +19,7 @@ const SearchForm = () => {
         <input
           className="h-12 w-full rounded-3xl bg-gray-200 pl-12 pr-4 outline-none focus:shadow-md"
           placeholder="Enter title or keywords..."
-          {...register('keyword', { required: true })}
+          {...register('keyword', { required: false })}
         />
         {errors.keyword && <span className="pl-4 pt-2 text-sm text-orange">This field is required</span>}
       </div>

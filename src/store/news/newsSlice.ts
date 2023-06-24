@@ -21,9 +21,9 @@ export const { setNewsOptions } = newsSlice.actions;
 
 export const newsApiSlice = apiSlice.injectEndpoints({
   endpoints: (build) => ({
-    getNews: build.query<News[], { params?: {} }>({
+    getNews: build.query<News[], { params?: { [key: string]: string } }>({
       query: ({ params }) => ({
-        url: `/news`,
+        url: `/search/news/`,
         params,
       }),
       async onQueryStarted(arg, { dispatch, queryFulfilled }) {
@@ -43,7 +43,7 @@ export const newsApiSlice = apiSlice.injectEndpoints({
 
     createNewsItem: build.mutation({
       query: ({ body }) => ({
-        url: `/addNews`,
+        url: `/search/news/`,
         method: 'POST',
         body,
       }),
@@ -71,6 +71,7 @@ export const newsApiSlice = apiSlice.injectEndpoints({
 
 export const {
   useGetNewsQuery,
+  useLazyGetNewsQuery,
   useLazyGetNewsItemByIdQuery,
   useCreateNewsItemMutation,
   useDeleteNewsItemMutation,

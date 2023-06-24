@@ -1,8 +1,9 @@
 import Button from 'components/Button';
 import SectionHeader from 'components/SectionHeader';
+import { PathName } from 'enums/pathNames';
 import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useAppSelector } from 'store';
 import { NewsBody } from 'store/news/news.types';
@@ -13,6 +14,7 @@ import {
 } from 'store/news/newsSlice';
 
 const NewsEdit = () => {
+  const navigate = useNavigate();
   const { newsId = '' } = useParams<{ newsId: string }>();
   const { role } = useAppSelector((state) => state.user);
   const [file, setFile] = useState<string | undefined | null>();
@@ -43,7 +45,10 @@ const NewsEdit = () => {
       : createNews({ body: { ...data, picture_news: pictureNews || null } })
     )
       .unwrap()
-      .then(() => toast.success(`${newsId ? 'Updated' : 'Created'} successfully`));
+      .then(() => {
+        navigate(PathName.News);
+        toast.success(`${newsId ? 'Updated' : 'Created'} successfully`);
+      });
   };
 
   useEffect(() => {

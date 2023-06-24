@@ -20,7 +20,7 @@ export const { setCQSOptions } = cqsSlice.actions;
 
 export const cqsApiSlice = apiSlice.injectEndpoints({
   endpoints: (build) => ({
-    getCQS: build.query<CQSBody[], { params?: {} }>({
+    getCQS: build.query<CQSBody[], { params?: { [key: string]: string } }>({
       query: ({ params }) => ({
         url: `/search/questions`,
         params,
@@ -37,8 +37,8 @@ export const cqsApiSlice = apiSlice.injectEndpoints({
     }),
 
     createCQSItem: build.mutation({
-      query: ({ body }) => ({
-        url: `/addNewSuggestion`,
+      query: (body) => ({
+        url: `/search/questions/`,
         method: 'POST',
         body,
       }),
@@ -53,9 +53,17 @@ export const cqsApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: (result, error, arg) => [{ type: 'CQS', id: arg.id }],
     }),
+    deleteCQSItem: build.mutation({
+      query: ({ id }) => ({
+        url: `/search/questions/${id}`,
+        method: 'DELETE',
+      }),
+      invalidatesTags: (result, error, arg) => [{ type: 'CQS', id: arg.id }],
+    }),
   }),
 });
 
-export const { useGetCQSQuery, useCreateCQSItemMutation, useUpdateCQSItemMutation } = cqsApiSlice;
+export const { useLazyGetCQSQuery, useCreateCQSItemMutation, useUpdateCQSItemMutation, useDeleteCQSItemMutation } =
+  cqsApiSlice;
 
 export default cqsSlice.reducer;

@@ -18,6 +18,7 @@ const SignUp = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm({
     mode: 'onChange',
     defaultValues: {
@@ -35,7 +36,10 @@ const SignUp = () => {
   const onSubmit = (data: UserProps) => {
     createUser({ body: data })
       .unwrap()
-      .then(() => toast.success('Created user successfully'));
+      .then(() => {
+        reset();
+        toast.success('Created user successfully');
+      });
   };
 
   const handleLogin = () => {
