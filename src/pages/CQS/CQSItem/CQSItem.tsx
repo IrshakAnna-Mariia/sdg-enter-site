@@ -1,4 +1,5 @@
 import Button from 'components/Button';
+import Loader from 'components/Loader';
 import { useAppSelector } from 'store';
 import { CQSBody } from 'store/cqs/cqs.types';
 import { useDeleteCQSItemMutation } from 'store/cqs/cqsSlice';
@@ -13,6 +14,7 @@ const CQSItem: React.FC<CQSBody> = ({ title, user, text, id }) => {
 
   return (
     <div className="relative flex w-full flex-col gap-4 rounded-xl bg-white p-9">
+      <Loader isVisible={isLoading} />
       <div className="absolute -top-4 -right-6 flex gap-2 rounded-xl">
         {/* {email === user.email && <Button label={'Edit'} onClick={handleEdit} styleForm={'pill'} size="base" />} */}
         {(role === 'admin' || email === user.email) && (

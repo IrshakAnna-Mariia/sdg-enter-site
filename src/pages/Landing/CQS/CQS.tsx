@@ -1,4 +1,5 @@
 import Button from 'components/Button';
+import Loader from 'components/Loader';
 import SectionHeader from 'components/SectionHeader';
 import { PathName } from 'enums/pathNames';
 import SpaceX from 'icons/spacex.png';
@@ -36,6 +37,7 @@ const CQS = () => {
 
   return (
     <form className="mt-24 flex flex-col items-center gap-8" onSubmit={handleSubmit(onSubmit)}>
+      <Loader isVisible={isLoading} />
       <SectionHeader title={'CQS'} />
 
       <div className="mx-auto flex w-3/4 flex-col items-center gap-8 rounded-3xl bg-white bg-opacity-50 p-16">
