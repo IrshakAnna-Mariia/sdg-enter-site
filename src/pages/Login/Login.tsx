@@ -7,11 +7,12 @@ import { LoginProps } from 'store/user/user.types';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { useAppSelector } from 'store';
+import Loader from 'components/Loader';
 
 const Login = () => {
   const navigate = useNavigate();
   const { accessToken } = useAppSelector((state) => state.user);
-  const [login] = useLoginUserMutation();
+  const [login, { isLoading }] = useLoginUserMutation();
   const {
     register,
     handleSubmit,
@@ -38,6 +39,7 @@ const Login = () => {
 
   return (
     <form className="flex w-full flex-col" onSubmit={handleSubmit(onSubmit)}>
+      <Loader isVisible={isLoading} />
       <SectionHeader title={'Login'} />
 
       <div className="mx-auto mb-8 h-px w-3/4 bg-orange" />

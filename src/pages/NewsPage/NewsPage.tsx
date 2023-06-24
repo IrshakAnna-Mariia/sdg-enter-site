@@ -1,3 +1,4 @@
+import Loader from 'components/Loader';
 import SectionHeader from 'components/SectionHeader';
 import NewItem from 'pages/News/NewItem';
 import { useEffect } from 'react';
@@ -14,6 +15,7 @@ const NewsPage = () => {
 
   return (
     <div className="mx-auto flex w-3/4 flex-col items-center gap-8">
+      <Loader isVisible={isLoading || isFetching} />
       <SectionHeader title={isLoading || isFetching ? 'Loading...' : data ? data.title : 'No Title'} />
 
       {data && <NewItem {...data} isFullVersion />}
