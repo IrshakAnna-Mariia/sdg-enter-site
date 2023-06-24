@@ -1,22 +1,22 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
-import Button from "components/Button";
-import SectionHeader from "components/SectionHeader";
-import { PathName } from "enums/pathNames";
-import { ReactComponent as RoadMapImg } from "icons/roadMap.svg";
+import Button from 'components/Button';
+import SectionHeader from 'components/SectionHeader';
+import { PathName } from 'enums/pathNames';
+import { ReactComponent as RoadMapImg } from 'icons/roadMap.svg';
 
-const RoadMap = () => {
+const RoadMap: React.FC<{ isLanding?: boolean }> = ({ isLanding }) => {
   const navigate = useNavigate();
 
-  const handleViewProgress = () => {
-    navigate(PathName.Profile);
+  const handleViewRoadMap = () => {
+    navigate(PathName.RoadMap);
   };
 
   return (
-    <div className="flex min-h-screen flex-col items-center mt-24">
+    <div className="mt-24 flex min-h-screen flex-col items-center">
       <SectionHeader title={'ROAD MAP'} />
       <RoadMapImg className="w-3/5" />
-      <Button label="View your progress" onClick={handleViewProgress} styleForm="pill" size="lg" />
+      {isLanding && <Button label="View more" onClick={handleViewRoadMap} styleForm="pill" size="lg" />}
     </div>
   );
 };

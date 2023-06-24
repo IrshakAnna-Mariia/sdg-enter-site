@@ -1,20 +1,22 @@
-import SectionHeader from "components/SectionHeader";
-import NewItem from "pages/News/NewItem";
+import SectionHeader from 'components/SectionHeader';
+import NewItem from 'pages/News/NewItem';
+import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { useLazyGetNewsItemByIdQuery } from 'store/news/newsSlice';
 
-const newsItem = 
-    {
-      title: 'Title 1',
-      text: 'Long text. Some new sentence. And one more. Long text. Some new sentence. And one more. Long text. Some new sentence. And one more. Long text. Some new sentence. And one more.',
-      filePath: '',
-      id: '1',
-    };
 const NewsPage = () => {
+  const { newsId = '' } = useParams<{ newsId: string }>();
+  const [getNewsItemData, { data, isLoading, isFetching }] = useLazyGetNewsItemByIdQuery();
+
+  useEffect(() => {
+    if (newsId) getNewsItemData({ id: newsId });
+  }, [getNewsItemData, newsId]);
+
   return (
     <div className="mx-auto flex w-3/4 flex-col items-center gap-8">
-      <SectionHeader title="Title 1" />
+      <SectionHeader title={isLoading || isFetching ? 'Loading...' : data ? data.title : 'No Title'} />
 
-      
-      <NewItem {...newsItem} isFullVersion />
+      {data && <NewItem {...data} isFullVersion />}
     </div>
   );
 };

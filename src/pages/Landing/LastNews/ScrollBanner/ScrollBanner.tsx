@@ -12,12 +12,12 @@ import { onWheel } from './scrollBanner.settings';
 import { scrollVisibilityApiType } from './scrollBanner.types';
 
 const getItems = () => [
-  { title: 'Title 1', files: [news1], id: '1' },
-  { title: 'Title 2', files: [news2], id: '2' },
-  { title: 'Title 3', files: [news3], id: '3' },
-  { title: 'Title 4', files: [news1], id: '4' },
-  { title: 'Title 5', files: [news2], id: '5' },
-  { title: 'Title 6', files: [news3], id: '6' },
+  { title: 'News 1', files: [news1], id: '1' },
+  { title: 'News 2', files: [news2], id: '2' },
+  { title: 'News 3', files: [news3], id: '3' },
+  { title: 'News 4', files: [news1], id: '4' },
+  { title: 'News 5', files: [news2], id: '5' },
+  { title: 'News 6', files: [news3], id: '6' },
 ];
 
 const ScrollBanner = () => {
